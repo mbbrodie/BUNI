@@ -1,0 +1,5 @@
+%inception-score
+
+Inception Score (IS) \cite{gulrajani2017improved} remains the most popular and widely adopted GAN evaluation metrics.
+However, recent theoretical and empirical analyses \cite{barratt2018note, borji2018pros, odena2016conditional} demonstrate that IS does not measure intra-class diversity and fails to detect training set memorization.
+Additionally, IS relies on an Inception model pretrained on the 1000-label ImageNet dataset, which may not be appropriate for certain GAN evaluation tasks (e.g. MNIST, CIFAR-10, or other datasets with data and label distributions that significantly differ from ImageNet).
