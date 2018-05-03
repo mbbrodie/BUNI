@@ -1,5 +1,16 @@
-%inception-score
+\subsection{Inception Score}
+\label{sub:inception_score}
 
-Inception Score (IS) \cite{gulrajani2017improved} remains the most popular and widely adopted GAN evaluation metrics.
+Inception Score (IS) \cite{gulrajani2017improved} remains one of the most popular and widely adopted GAN evaluation metrics.
+Using a representative image sample from generator, $G$, IS produces class label distributions using a pretrained Inception v3 deep neural network.
+IS then calculates the Kullback-Leibler divergence between each generated output, $G(z_i)$, and the average label distribution of all samples.
+The exponentiated expectation of these KL-divergences yields the final IS score.
+Formally, we describe this as 
+\begin{equation}
+	IS(G) = exp(\ \mathbb{E}_{G(z_i)}\ KL(p\ ||\ q)\ )
+\end{equation}
+In their introductory work, \cite{salimans2016improved} state that IS tends to correlate well with human opinion of image realism.
+
 However, recent theoretical and empirical analyses \cite{barratt2018note, borji2018pros, odena2016conditional} demonstrate that IS does not measure intra-class diversity and fails to detect training set memorization.
-Additionally, IS relies on an Inception model pretrained on the 1000-label ImageNet dataset, which may not be appropriate for certain GAN evaluation tasks (e.g. MNIST, CIFAR-10, or other datasets with data and label distributions that significantly differ from ImageNet).
+Additionally, IS relies on an Inception model pretrained on the 1000-label ImageNet dataset, which may not be appropriate for non-ImageNet GAN evaluation tasks. 
+Examples include MNIST, CIFAR-10, and other datasets with image statistics and label distributions that significantly differ from ImageNet.
