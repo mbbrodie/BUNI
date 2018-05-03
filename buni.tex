@@ -1,4 +1,6 @@
 \documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+
 \title{Believable UNique Index (BUNI): \\A novel metric based on IQA and GAN quantitative evaluation methods}
 \date{}
 \author{Mike Brodie, Brian Rasmussen, Scott Corbitt, \\ Garrett Lingard, Tony Martinez}
@@ -9,9 +11,15 @@
 \section{GAN Quantitative Evaluation Methods}
 \input{methods/gan-overview.tex}
 \input{methods/inception-score.tex}
+%\input{methods/mode-score.tex}
+%\input{methods/frechet-inception-distance.tex}
+%\input{methods/am-score.tex}
+%\input{methods/modified-inception-score.tex}
 
 %%%%%% ADD YOUR IQA METHODS HERE %%%%%%
 \section{Image Quality Assessment Methods}
 
+\bibliographystyle{plain}
+\bibliography{buni}
 
 \end{document}
