@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb,comment}
 
 \title{Believable UNique Index (BUNI): \\A novel metric based on IQA and GAN quantitative evaluation methods}
 \date{}
@@ -11,14 +11,58 @@
 \section{GAN Quantitative Evaluation Methods}
 \input{methods/gan-overview.tex}
 \input{methods/inception-score.tex}
+\begin{comment}
+See https://arxiv.org/pdf/1802.03446.pdf for ideas. IMPROVE upon their explanations. 
+
+If you are absolutely CONFIDENT that the explanation in 1802.03446.pdf is adequate
+(i.e. discusses WHY it exists/where it came from, HOW it works, and identifies weaknesses),
+commit a .tex file with a 1-line summary/single citation and the words 'SEE 1802.03446.pdf for more details.'
+
+Otherwise, write up the following:
+(1) WHY it exists (what preceded it? what problem does it solve)
+(2) HOW it works
+(3) WEAK points / FAIL cases
+
+Add citations to buni.bib, and commit all your files.
+\end{comment}
+
 %\input{methods/mode-score.tex}
 %\input{methods/frechet-inception-distance.tex}
 %\input{methods/am-score.tex}
 %\input{methods/modified-inception-score.tex}
+%\input{methods/average-log-likelihood.tex}
+%\input{methods/coverage-metric.tex}
+%\input{methods/maximum-mean-discrepancy.tex}
+%\input{methods/birthday-paradox-test.tex}
+%\input{methods/classifier-two-sample-tests.tex}
+%\input{methods/classification-performance.tex}
+%\input{methods/image-retrieval-performance.tex}
+%\input{methods/generative-adversarial-metric.tex}
+%\input{methods/adversarial-accuracy.tex}
+%\input{methods/adversarial-divergence.tex} % from SAME paper as adversarial-accuracy.tex
+%\input{methods/reconstruction-error.tex}
 
 %%%%%% ADD YOUR IQA METHODS HERE %%%%%%
-\section{Image Quality Assessment Methods}
+\section{Image Quality Assessment Methods} 
 \input{methods/iqa-overview.tex}
+
+\subsection{No Reference IQA} % --> NRIQA usually best when distortion type known (i.e. blurring, jpeg lossiness)
+\label{sub:no_reference_iqa}
+%\input{methods/jpeg-quality-index.tex}
+%\input{methods/high-low-frequency-index.tex}
+% DIIVINE (Distortion Identification based Image Verify & Integrity Evaluation) PAPER: 'Blind image quality Assessment: From natural scene statistics to perceptual quality'
+% BLIINDS-I (Blind Image Integrity notator using DCT Statistics-I) PAPER: 'A DCT statistics- based blind image quality index'
+% BLIINDS-II PAPER: 'Image and Video Quality Assessment with BLIINDS-II Algorithm using NSS Approach in DCT domain'
+% Natural Image Quality Evaluator
+
+\subsection{Reduced Reference IQA} 
+\label{sub:reduced_reference_iqa}
+
+
+\subsection{Video IQA} 
+\label{sub:video_iqa}
+% Motion-based Video Integrity Evaluation (MOVIE) index 
+
 
 \bibliographystyle{plain}
 \bibliography{buni}
