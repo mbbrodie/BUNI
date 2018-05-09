@@ -1,0 +1,15 @@
+\subsection{Mode Score} 
+\label{sub:mode_score}
+MODE score was introduced in \cite{che2016mode} in order to measure Mode Collapse better than Inception Score \cite{gulrajani2017improved}. 
+Instead of calculating the KL divergence between the softmax output of each generated image and the overall label distribution, MODE score calculates the KL divergence between the softmax outputs and the label distribution of the \textit{training} data.
+MODE Score then subtracts the KL divergence between the overall divergence and the label distribution.
+Formally, we describe this as
+\begin{equation}
+	exp \Big (\mathbb{E}_xKL(\ p(y|x)\ ||\ p(y)\ ) - KL(\ p^*(y)\ ||\ p(y)\ ) \Big ).
+\end{equation}
+
+One drawback of this approach is that it does not naturally handle unlabelled datasets.
+While \cite{che2016mode} offers an workaround solution using an auxiliary discriminator, this approach does not naturally transfer to other datasets. 
+Furthermore, it requires training an additional discriminator, which can be difficult to train stably to convergence.
+%%NOTE -> Equation 5 needs expaning
+Finally, MODE inherits one of the primary flaws of IS, namely, that it relies upon a pretrained Inception classification network.
