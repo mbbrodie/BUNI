@@ -1,0 +1,14 @@
+\subsection{Classifier Two Sample Test}
+\label{sub:classifier_two_sample_test}
+
+Classifier Two Sample tests (C2ST) \cite{borji2018pros} are used to determine if two samples are taken from the same distribution, and according to \cite{2016arXiv161006545L} they have potential in the evaluation of GANs.
+A C2ST is performed by creating a binary classifier and training it to discriminate between samples collected from two distributions.
+This classifier is then tested on novel samples from these distributions.
+If it is unable to accurately classify the samples according to their distribution, then the two distributions are declared to be equal.
+A more detailed explanation of the process is found in \cite{borji2018pros} and \cite{2016arXiv161006545L}.
+INPUT EQUATION HERE IF WE WANT IT
+According to \cite{2016arXiv161006545L}, C2STs are useful because they are easily implemented, can learn data representations dynamically, and are flexible and varied in their implementations.
+One of the difficulties of working with C2STs are that they are by nature binary and therefore have difficulty discriminating more than two classes.
+Another problem is that C2STs are not well equipped to judge a GAN based on the diversity of its outputs, meaning it can grade very well a network that generates the same image for each input.
+
+SEE IF THERE ARE MORE DIFFICULTIES IN C2STS
