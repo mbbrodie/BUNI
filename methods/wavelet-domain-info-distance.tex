@@ -1,0 +1,17 @@
+%wavelet-domain-info-distance.tex
+\subsubsection{Wavelet Domain Information Distance}
+\label{sub:wavelet_domain_information_distance}
+Histograms of wavelet subbands provide an efficient method to represent images.
+\cite{wang2005reduced} use a 2-parameter generalized Gaussian density (GDD) model \cite{simoncelli1996noise} to approximate the marginal distribution of wavelet subband coefficients in undistorted reference images.
+Specifically, they decompose an image into 12 subbands using a pyramid wavelet transform \cite{simoncelli1992shiftable} at various scales and orientations.
+After selecting and generating coefficient histograms for a subset of the generated subbands, this method estimates the parameters of a GDD to represent each subband.
+
+Following the GDD training for reference images, this method calculates the coefficient histograms of the wavelet transform subbands for distorted images.
+The distortion level between reference and distored images is calculated as
+\begin{equation}
+	D = log_2 \Bigg (1 + \frac{1}{D_0} \sum_{k=1}^{K} | \hat d^k(p^k||q^k)| \Bigg )
+\end{equation}
+where $D_0$ is a scaling constant, $K$ is the number of extracted subbands, $p^k$ is the probability density function (PDD) of the reference images, $q^k$ is the PDD of the distorted images, and $d^k$ is a function that estimates the Kullback-Leibler divergence.
+
+A notable drawback of this method is the need to reduce the number of subbands for efficient computation. 
+In addition, wavelets are not shift invariant and cannot capture diagonal features well \cite{kingsbury2001complex}.
