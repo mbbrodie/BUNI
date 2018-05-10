@@ -1,0 +1,53 @@
+\subsection{Birthday Paradox Test}
+\label{sub:Birthday Paradox Test}
+%% learning how to use latex
+
+\begin{comment}
+Probably needs a little more work.
+%% Why
+Birthday Paradox Test \cite{arora2018gans} was created to measure whether or not the model had learned the distribution of the training set that the model was trained on. Other metrics are able to rule out if the model has simply memorized the training set but don't answer the question if the model has learned the wanted distribution. 
+
+%% how it works
+run the model to generate distribution(or images I think)
+(a) Pick a sample Size s 
+(b) The Birthday Paradox Text (BPT) looks at the closest(closest by similarity) 20 pairs.
+(c) Visually inspect the 20 pairs to see if you be classified as duplicates by humans. (I think in the actual metric)
+(d) Repeat a -c
+If test says size s has duplicates with reasonable probability then the model has a support space size of s**2
+%Problems
+Need A human to see if the pairs are in fact similiar?
+Each dataset might need a different Heurstic Similarity Measure 
+Doesn't work well with blurry images AKA won't work with gans that don't make sharp, realistic images.
+\end{comment}
+
+%%actual words
+The Birthday Paradox Test \cite{arora2018gans} (BPT) measures whether or not a model has learned the distribution of a training set.
+Other metrics can rule out if a model has simply memorized the training set, but do not determine if a model has captured the overall target distribution.
+
+The BPT is based on the famous \textit{Birthday Paradox}, which states that if a model supports a distribution of size $N$, then a sample of $\sqrt{N}$ will most likely contain a duplicate. 
+%GANs will almost never produce two identical images so in order to combat this the metric simply says that duplicates are images that have high similarity. 
+Because GANs may produce near-identical images with minor variations, this metric aims to identify images with high levels of similarity.
+The proposed test uses a predetermined distance measure to select 20 pairs of the most similar images from a sample of size $|S|$. 
+A human evaluator then inspects the image pairs for any duplicates.
+\begin{comment}	
+\begin{enumerate}
+    \item Using a predetermined measure, select 20 pairs of the most similar images from a sample of |S| images.
+    \item Use a human to identify the presence of a duplicate pair.
+    \item 
+    \item Pick a sample size s from the generated distribution of the model.
+    \item Using a pre-selected measure, choose 20 pairs of the most similar images from the sample.
+    \item Use a human to identify the presence of a duplicate pair.
+    \item Repeat.
+\end{enumerate}
+\end{comment}
+If the human can identify a duplicate pair, then the support size is less than $|S|^2$.
+
+%The Birthday Paradox Test has some drawbacks.
+One drawback of the BPT is that the appropriate heuristic to find the 20 closest pairs from a sample may differ across datasets.
+%Besides just having to have a different way to create pairs from each dataset, creating those pairs might be difficult.
+For instance, \cite{arora2018gans} used two different heuristics for finding the 20 most similar pairs in the CelebA \cite{liu2015faceattributes} and CIFAR-10 \cite{krizhevsky2009learning} datasets.
+%For the CelebA dataset, they used simple Euclidean distance in pixel space to determine pairs.
+%But with the CIFAR-10 dataset they used a convolutional neural network to create the 20 pars.
+%Another problem caused by the different ways of finding the closest pairs is that the found distribution space is an upper bound, the better the heuristic for finding the 20 closest pairs the tighter the bound of the estimated distribution versus the actual distribution.
+The test also requires a human subject to identify duplicates, which precludes autonomous evaluation. 
+Also, as indicated by \cite{arora2018gans}, the BPT also does not effectively handle blurry or unrealistic images. 
