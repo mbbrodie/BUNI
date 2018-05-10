@@ -34,10 +34,10 @@ The Birthday Paradox Test is based on the famous \textit{Birthday Paradox} which
 If the above test finds a duplicate then the support size is less then $S^2$.
 
 The Birthday Paradox Test has some drawbacks.
-The first being that the measure needed to find the 20 closest pairs from the sample could be different for each dataset.
+The first being that the heuristic needed to find the 20 closest pairs from the sample could be different for each dataset.
 Besides just having to have a different way to create pars from each dataset, creating those pars might be difficult.
-\cite{arora2018gans} used two different measures for finding the 20 most similar pars.
+\cite{arora2018gans} used two different heuristic for finding the 20 most similar pars.
 The first being for the CelebA dataset in which they simple used a Euclidean distance in pixel space to determine pars.
 But with the CIFAR-10 dataset they had to use a CNN to create the 20 pars.
-And the found distribution space is an upper bound the better the measure of finding the 20 closest pars the tighter the bound on found the distribution versus the actual distribution.
+Another problem caused by the different ways of finding the closest pars is that the found distribution space is an upper bound, the better the heuristic for finding the 20 closest pars the tighter the bound of the estimated distribution versus the actual distribution.
 The test also requires a human subject to determine if any of the 20 pairs are considered "duplicates", which means this test can not be completely autonomous. This test as stated in \cite{arora2018gans} also doesn't work well with blurry or non realistic images. 
