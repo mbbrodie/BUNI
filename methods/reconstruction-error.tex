@@ -1,0 +1,19 @@
+\begin{comment}
+Reconstruction error is primarily used in variational autoencoders. It's the error from feature reduction then reconstruction. 
+
+One problem with it is with a generative network, it's hard to estimate exactly how much the encoding is off by, due to the difficulty of guessing what the GAN output "should" have been. Xiang and Li estimated the error using gradient descent on latent code to find a vector that minimizes the L2 norm between the sample generated from the code and the target sample. This makes the evaluation process time consuming. 
+
+\end{comment}
+
+\subsection{Reconstruction Error}
+\label{sub:reconstruction_error}
+
+Reconstruction error, a commonly used metric from mathematics to measure the effectiveness of dimensionality reduction, was naturally extended to the world of variational autoencoders. \cite{kingma2013auto}
+Reconstruction error measures the L2 norm from a set of test samples. 
+The reconstruction error of G on X is defined as: 
+\begin{equation}
+    \mathcal{L}_{rec} (G,X) = \frac{1}{m}\sum_{i=1}^{m}min_z||G(z)-x^{(i)}||^2
+\end{equation}
+The downside of this approach is that to estimate the ideal z from the sample x, a costly evaluation process is required. 
+\cite{xiang2017effects}
+Additionally, this makes the most sense for generative models using some type of encoder, and does not come naturally to most GANs.
