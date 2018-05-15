@@ -2,5 +2,5 @@
 \label{sub:generative_adversarial_metric}
 
 The Generative Adversarial Metric attempts to use a key feature of GANs - the discriminator - to see how good a network has become. 
-By training two separate GANs then switching the discriminator for a test set, the metric attempts to obtain a more generalized accuracy reading.
+By training two separate GANs then switching the discriminator for a test set, the metric attempts to obtain a more generalized accuracy reading.\cite{im2016generative}
 The downside of this metric is that it's not consistent - each discriminator is trained differently, and so the accuracy could vary significantly with each run, even if the generators happened to be very similar.
