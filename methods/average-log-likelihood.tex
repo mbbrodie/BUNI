@@ -1,0 +1,24 @@
+\subsection{Average Log Likelihood}
+\label{sub:Average Log Likelihoodt}
+
+\begin{comment}
+% url for explainig what log likelihood is https://www.quora.com/In-generative-models-like-GAN-for-images-they-use-the-log-likelihood-as-a-metric-How-exactly-can-I-compute-that
+
+%  How it works
+ Kernel density estimation and Parzen window estimation are used to estimate the density function of a distribution from samples.
+ You take samples from your generator and 
+ With the estimated density function defined you can use the Kullback-Leibler divergence or similar metrics to calculate the distance between the generated distribution and distribution of the test data.
+ 
+ %problems
+ It doesn't work well :D lol
+ when the data has high dimensionality a Parzen Window struggles to produce the true log-likelihood of a model.(AKA it is not very accurate)
+ If the dimesnsionality is low still requires lots of samples to come close to the true log-likelihood.
+ 
+ Because can't really estimate the log-likelihood very well even if dimensions is small.
+ 
+\end{comment}
+
+ To estimate the density function of the generator, A kernel density estimation or a Parzen window estimation is commonly used.
+ The likelihood is then found by taking the test data and measuring its likelihood under the estimated density function.
+ But because getting an estimate of likelihood is not possible 
+ 
