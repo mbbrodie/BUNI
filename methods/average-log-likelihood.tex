@@ -21,7 +21,7 @@
 This still needs work, but I think this is the over all idea and problems
 
  To estimate the density function of the generator, A kernel density estimation or a Parzen window estimation is commonly used.
- The likelihood is then found by taking the test data and measuring its likelihood under the estimated density function.
+ The likelihood is then found by taking the test data and measuring its likelihood under the estimated density function \cite{eghbal2017likelihood}.
  It is this likelihood that is used to measure the accuracy of the model.
  The accuracy can be measured by using Kullback-Leibler divergence or a similar metric to find the distance between the generated and the test distribution.
  
@@ -29,5 +29,5 @@ This still needs work, but I think this is the over all idea and problems
  The first being that when the model has high dimensionality a kernel density estimation or the Parzen window estimation struggle in estimating the log-likelihood of the model.
  Even when the dimensionality is low it still takes many samples to get a somewhat accurate estimation of the true log-likelihood.
  Another disadvantage is that in some cases the log-likelihood does not accurately represent the model.
- The model might have poor log-likelihood but in reality is producing good sample or it has a good log-likelihood but is creating bad samples.
+ The model might have poor log-likelihood but in reality is producing good sample or it has a good log-likelihood but is creating bad samples \cite{borji2018pros}.
  
