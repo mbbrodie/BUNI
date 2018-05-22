@@ -1,0 +1,46 @@
+\subsection{Image Retrieval Performance}
+\label{sub:Image Retrieval Performance}
+
+\begin{comment}
+  Measures the distributions of distances to the nearest neighbors of some query images (i.e., dive
+  Goal is to find Data Set Images that the GAN can't quite reproduce (problem images).
+  Convolutional Neural Networks (CNN) are used to give each test and generated image a discriminating vector (the vector used for image retrieval).  This vector is used to determine the distance between
+  Nearest neighbors w/ respect to these vectors are obtained.
+  2 methods proposed
+    1st is to get the jth closest image (usually j=1, so just the closest image) to each image of the test set.  Try it for 2 methods and then compare their median distances.  Smallest median distance wins
+    2nd is to get the nearest distance set from the training set to the test set. This is treated as the best distance that model could get. Use the mean distance from this nearest neighbor set, and compare to mean distance from generated set to test set (assume test and generated are of the same size). Use equation
+
+  Pros: Easily see improvement b/w networks.  Easily see if network is performing poorly
+  Cons: Requires the training and use of a CNN.  Dependent on given data distribution.  Not guaranteed a wide variety of outputs.  (variety limited by # of pictures in test set).
+\end{comment}
+
+%WHY
+Wang, et al \cite{wang2016ensembles} state that their image retrieval method of evaluating GANs was implemented because they wanted to measure how GANs and ensembles of GANs represented a data distribution, instead of measureing the quality of the images generated.
+%HOW
+Their method uses discriminatively trained CNNs to assign each test set image and each generated image an image descriptor, which is then used to determine the nearest neighbor distances between test set images and generated images.  Two methods are provided for analyzing these distances \cite{wang2016ensembles}\cite{borji2018pros}.
+\begin{enumerate}
+  \item The first method is used to compare two different image generators. Given generator $k$, let $d_{i,j}^k$ be the $j^{th}$ nearest generated image to test image $i$.
+  Let $\bf{d}_j^k$ $= \{d_{1,j}^k,\cdots,d_{n,j}^k\}$ be the set of $j^{th}$-nearest distances to all $n$ test images.
+  % I slightly copied the wording from wang2016 for the end of that last sentence.  Maybe should revise?
+  Note that typically $j=1$ so that only the closest image is used. These distributions are obtained for two generators and the hypothesis that the median of the difference between two nearest distance distributions of generators is zero is tested by the Wilcoxon signed-rank test.
+  If the hypothesis passes then the generators are equally good representations of the data distribution.
+  Otherwise the better generator can be determined from the test.
+  \item The second method is used to determine how well a certain generator performs in relation to an ideal generator. The ideal generator is emulated by the test set seeing as the train and test sets are taken from the same distributions.
+   Let $\bf{d}_j^t$ be the distribution of the $j^{th}$ nearest distance between the train and test sets.
+   The difference between the ideal distribution $\bf{d}_j^t$ and the distribution from a given generator $\bf{d}_j^k$ is modeled by the relative increase in mean nearest neighbor difference, which is calculated as follows.
+\end{enumerate}
+
+
+\begin{equation}
+  \hat{d}_j^k = \frac{\bar{d}_j^k - \bar{d}_j^t}{\bar{d}_j^t}
+\end{equation}
+\begin{align*}
+  \bar{d}_j^k = \frac{1}{N}\sum_{i=1}^Nd_{i,j}^k,j
+  &&
+  \bar{d}_j^t=\frac{1}{N}\sum_{i=1}^{N}d_{i,j}^t
+\end{align*}
+
+%FAIL CASES
+Image retrieval performace is useful because it allows one to easily compare two networks or to see if a network is performing poorly.
+However, it is not without its faults. It relies on the training and use of a CNN.
+It is also dependent upon the given data distribution, and does not guarantee a wide variety of outputs (its variety is limited by the size of the test set).
