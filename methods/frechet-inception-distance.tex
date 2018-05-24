@@ -1,0 +1,34 @@
+\subsection{Frechet Inception Distance}
+\label{sub:Frechet Inception Distance}
+%% learning how to use latex
+
+\begin{comment}
+    how:
+        The real and fake data is embedded into the inception network.
+        Looks at embedded layer as a Multi-variant-Guassian distribution
+        Find mean and covariance for embedded layer
+        
+    Good: IS can not detect intra-class Mode-Collapse but FID can. (can detect if only makes one image per class) will have bad FID Score
+    More robust to noise then IS
+    
+    Bad:
+        Needs Inception Net (that is googles thing?)
+        Can not detect over fitting if Memory Gan (A gan that memorizes the training set) will score perfectly with FID.
+        Needs a model to classify output.
+        
+\end{comment}
+
+
+Frechet Inception Distance addresses one of the fundamental flaws of Inception Score
+The flaw being that Inception Score fails to detect intra-class diversity or Mode Collapse \cite{borji2018pros}. 
+Frechet Inception Distance works by embedding the sample and generated data into a new feature space by using a specific layer of Inception Net. 
+The embedded layer is then viewed as a continuous Gaussian distribution and the mean and covariance of the Gaussian distribution is estimated for the generated data and the training data. 
+With the mean and covariance found the Frechet Inception Distance can be calculated by:
+\begin{equation}
+    FID(x,y) = \| \mu_x - \mu_y \|_2^2 + TR(\Sigma_x + \Sigma_y - 2(\Sigma_x\Sigma_y)^{\frac{1}{2}})
+\end{equation}
+
+The Fretchet Inception Distance has a few drawbacks the first being that it requires some model that can classify the training and generated images, such as Inception Net.
+Another major flaw is that it can not detect over fitting.
+If a model memorizes the training data, the model will receive a perfect FID score \cite{lucic2017gans}.
+
