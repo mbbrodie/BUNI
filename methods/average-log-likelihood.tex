@@ -1,0 +1,33 @@
+\subsection{Average Log Likelihood}
+\label{sub:Average Log Likelihoodt}
+
+\begin{comment}
+% url for explainig what log likelihood is https://www.quora.com/In-generative-models-like-GAN-for-images-they-use-the-log-likelihood-as-a-metric-How-exactly-can-I-compute-that
+
+%  How it works
+ Kernel density estimation and Parzen window estimation are used to estimate the density function of a distribution from samples.
+ You take samples from your generator and 
+ With the estimated density function defined you can use the Kullback-Leibler divergence or similar metrics to calculate the distance between the generated distribution and distribution of the test data.
+ 
+ %problems
+ It doesn't work well :D lol
+ when the data has high dimensionality a Parzen Window struggles to produce the true log-likelihood of a model.(AKA it is not very accurate)
+ If the dimesnsionality is low still requires lots of samples to come close to the true log-likelihood.
+ 
+ Because can't really estimate the log-likelihood very well even if dimensions is small.
+ 
+\end{comment}
+
+This still needs work, but I think this is the over all idea and problems
+
+ To estimate the density function of the generator, A kernel density estimation or a Parzen window estimation is commonly used.
+ The likelihood is then found by taking the test data and measuring its likelihood under the estimated density function \cite{eghbal2017likelihood}.
+ It is this likelihood that is used to measure the accuracy of the model.
+ The accuracy can be measured by using Kullback-Leibler divergence or a similar metric to find the distance between the generated and the test distribution.
+ 
+ Many problems arise with the use of estimating the log-likelihood of a model.
+ The first being that when the model has high dimensionality a kernel density estimation or the Parzen window estimation struggle in estimating the log-likelihood of the model.
+ Even when the dimensionality is low it still takes many samples to get a somewhat accurate estimation of the true log-likelihood.
+ Another disadvantage is that in some cases the log-likelihood does not accurately represent the model.
+ The model might have poor log-likelihood but in reality is producing good sample or it has a good log-likelihood but is creating bad samples \cite{borji2018pros}.
+ 
