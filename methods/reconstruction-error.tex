@@ -8,12 +8,11 @@ One problem with it is with a generative network, it's hard to estimate exactly 
 \subsection{Reconstruction Error}
 \label{sub:reconstruction_error}
 
-Reconstruction error, a commonly used metric from mathematics to measure the effectiveness of dimensionality reduction, was naturally extended to the world of variational autoencoders. \cite{kingma2013auto}
+Reconstruction error, a commonly used metric from mathematics to measure the effectiveness of dimensionality reduction, was naturally extended to the world of variational autoencoders \cite{kingma2013auto}.
 Reconstruction error measures the L2 norm from a set of test samples. 
 The reconstruction error of G on X is defined as: 
 \begin{equation}
     \mathcal{L}_{rec} (G,X) = \frac{1}{m}\sum_{i=1}^{m}min_z||G(z)-x^{(i)}||^2
 \end{equation}
-The downside of this approach is that to estimate the ideal z from the sample x, a costly evaluation process is required. 
-\cite{xiang2017effects}
+The downside of this approach is that to estimate the ideal z from the sample x, a costly evaluation process is required \cite{xiang2017effects}.
 Additionally, this makes the most sense for generative models using some type of encoder, and does not come naturally to most GANs.
