@@ -1,0 +1,14 @@
+\begin{comment}
+Computes the classification accuracies achieved by these two classifiers on
+a validation set, which can be the training set or another set of real images sampled from P(x). If
+Pg(x) is close to P(x), we expect to see similar accuracies.
+\end{comment}
+
+\subsection{Adversarial Accuracy}
+\label{sub:adversarial_accuracy}
+
+Adversarial Accuracy uses human-generated labels to group both the real and generated images.
+Then, a classifier tries to determine which group a novel image belongs in. If the generated images are close to the real ones, the classification accuracies will be similar. \cite{papernot2016distillation}
+
+However, this method does not guarantee that the images classified will be human recognizable. 
+A classifier could get quite high accuracy on generated images even if the generated images have consistent differences from real images. 
