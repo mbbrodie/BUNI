@@ -1,0 +1,12 @@
+
+\subsection{Image Retrieval Performance}
+\label{sub:image_retrieval_performance}
+
+Image Retrieval Performance uses a CNN to create an 864 dimensional vector representing each image, real and generated. Then a K-Nearest Neighbor algorithm (using Euclidean distance) measures whether the generated images are closer to other generated images, or to real ones. A model is ranked higher the closer the generated images are to the real ones. 
+The score is determined one of two ways:
+a. The Wilcoxon signed-rank test, a statistical means test, is employed to determine by how much the means of the two distributions (generated and real) differ. 
+b. The average distance of the nearest neighbor of an image in the real distribution to another image in the real distribution is compared to the average distance of the nearest neighbor from an image in the generated dataset to an image in the real dataset. Mathematically, this is expressed as:
+\begin{equation}
+	\hat{d}_j^k = \frac{\bar{d}_j^k - \bar{d}_j^t}{\bar{d}_j^t}, \bar{d}_j^k = \frac{1}{N}\sum_{i=1}^{N}{d_{i,j}^k}, \bar{d}_j^t = \frac{1}{N}\sum_{i=1}^{N}{d_{i,j}^t}
+\end{equation}
+where N is the size of the test dataset. For example, if the average nearest neighbor distance for a generated image is 10\% higher than for real images, the score would be .1 for that model.
